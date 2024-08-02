@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="ticket-details-form">
+    <h2>Ticket Details for Ticket #{{ ticketId }}</h2>
+    <form (ngSubmit)="submitForm()" [formGroup]="formData">
+      <div class="form-group">
+        <label for="reqDate">Request Date & Time</label>
+        <input id="reqDate" type="text" formControlName="reqDate" class="form-control" readonly>
+        <div *ngIf="formData.get('reqDate')?.invalid && formData.get('reqDate')?.touched" class="invalid-feedback">
+          Request Date is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="serviceType">Service Type</label>
+        <input id="serviceType" type="text" formControlName="serviceType" class="form-control" readonly>
+        <div *ngIf="formData.get('serviceType')?.invalid && formData.get('serviceType')?.touched" class="invalid-feedback">
+          Service Type is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="totalDays">Total Days</label>
+        <input type="text" id="totalDays" formControlName="totalDays" class="form-control" readonly>
+      </div>
+      <div class="form-group">
+        <label for="assignedTo">Assigned To</label>
+        <select id="assignedTo" formControlName="assignedTo" class="form-control">
+          <option value="" disabled selected>Select an option</option>
+          <option *ngFor="let user of users" [value]="user.Username">{{ user.Username }}</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" formControlName="startDate" class="form-control" (change)="formatDate('startDate')">
+        <div *ngIf="formData.get('startDate')?.invalid && formData.get('startDate')?.touched" class="invalid-feedback">
+<!--          <div *ngIf="formData.get('startDate')?.errors?.['required']">-->
+<!--            Start Date is required-->
+<!--          </div>-->
+          <div *ngIf="formData.get('startDate')?.errors?.['startDateInvalid']">
+            Start Date cannot be earlier than Request Date
+          </div>
+            <div *ngIf="formData.get('startDate')?.errors?.['dateRangeInvalid']">
+                Start Date cannot be greater than End Date
+            </div>
+        </div>
+      </div>
+
+        <!-- Added alert message -->
+        <div class="alert alert-danger" *ngIf="formData.get('startDate')?.invalid && formData.get('startDate')?.touched">
+            <div *ngIf="formData.get('startDate')?.errors?.['startDateInvalid']">
+                Start Date cannot be earlier than Request Date
+            </div>
+            <div *ngIf="formData.get('startDate')?.errors?.['dateRangeInvalid']">
+                Start Date cannot be greater than End Date
+            </div>
+        </div>
+
+<!--      &lt;!&ndash; Added alert message &ndash;&gt;-->
+<!--      <div class="alert alert-danger" *ngIf="formData.get('startDate')?.invalid && formData.get('startDate')?.touched">-->
+<!--        Start Date cannot be earlier than Request Date-->
+<!--      </div>-->
+
+<!--        &lt;!&ndash; Alert message&ndash;&gt;-->
+<!--        <div class="alert alert-danger" *ngIf="formData.get('endDate')?.errors?.['dateRangeInvalid'] && formData.get('endDate')?.touched">-->
+<!--            End Date cannot be earlier than Start Date-->
+<!--        </div>-->
+
+
+        <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" formControlName="endDate" class="form-control"  (change)="formatDate('endDate')">
+        <div *ngIf="formData.get('endDate')?.invalid && formData.get('endDate')?.touched" class="invalid-feedback">
+<!--          <div *ngIf="formData.get('endDate')?.errors?.['required']">-->
+<!--            End Date is required-->
+<!--          </div>-->
+          <div *ngIf="formData.get('endDate')?.errors?.['endDateInvalid']">
+            End Date cannot be earlier than Request Date
+          </div>
+            <div *ngIf="formData.get('endDate')?.errors?.['dateRangeInvalid']">
+                End Date cannot be earlier than Start Date
+            </div>
+        </div>
+      </div>
+
+        <!-- Added alert message -->
+        <div class="alert alert-danger" *ngIf="formData.get('endDate')?.invalid && formData.get('endDate')?.touched">
+            <div *ngIf="formData.get('endDate')?.errors?.['endDateInvalid']">
+                End Date cannot be earlier than Request Date
+            </div>
+            <div *ngIf="formData.get('endDate')?.errors?.['dateRangeInvalid']">
+                End Date cannot be earlier than Start Date
+            </div>
+        </div>
+
+<!--      &lt;!&ndash; Added alert message &ndash;&gt;-->
+<!--      <div class="alert alert-danger" *ngIf="formData.get('endDate')?.invalid && formData.get('endDate')?.touched">-->
+<!--        End Date cannot be earlier than Request Date-->
+<!--      </div>-->
+
+<!--        &lt;!&ndash; Alert for End Date cannot be earlier than Start Date &ndash;&gt;-->
+<!--        <div class="alert alert-danger" *ngIf="formData.get('endDate')?.errors?.['dateRangeInvalid'] && formData.get('endDate')?.touched">-->
+<!--            End Date cannot be earlier than Start Date-->
+<!--        </div>-->
+
+
+      <div class="form-group">
+        <label for="severity">Severity</label>
+        <select id="severity" formControlName="severity" class="form-control">
+          <option value="" disabled selected>Select Severity</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Critical">Critical</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status" class="form-control">
+          <option value="New">New</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Closed">Closed</option>
+        </select>
+      </div>
+
+      <!--    <div class="form-group" *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]">-->
+      <!--      <label for="dummy-{{i}}">Dummy-{{i}}</label>-->
+      <!--      <input type="text" id="dummy-{{i}}" formControlName="dummy-{{i}}" />-->
+      <!--    </div>-->
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary mr-2">Update</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelForm()">Cancel</button>
+      </div>
+    </form>
+
+    <div *ngIf="submittedSuccessfully && ticketDetails" class="alert alert-success mt-3">
+      Data Updated successfully!
+    </div>
+  </div>
+</div>

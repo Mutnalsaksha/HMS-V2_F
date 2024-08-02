@@ -1,0 +1,47 @@
+<a href="/service-handler" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+
+<div class="profile-container">
+  <div class="profile-header">
+    <h2>{{ userProfile?.Username }}</h2>
+    <p>{{ userProfile?.EmailAddress }}</p>
+  </div>
+
+  <div class="profile-details">
+    <h3>Profile Details</h3>
+    <p><strong>Name:</strong> {{ userProfile?.Name }}</p>
+    <p><strong>Phone:</strong> {{ userProfile?.MobileNumber }}</p>
+    <p><strong>Address:</strong> {{ userProfile?.Address }}</p>
+    <p><strong>Bio:</strong> {{ userProfile?.Bio }}</p>
+  </div>
+
+  <button (click)="editProfile()" class="edit-button">Edit Profile</button>
+</div>
+
+<!-- Edit Profile Modal -->
+<div *ngIf="isEditing" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Edit Profile</h2>
+    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+      <label for="username">Username:</label>
+      <input id="username" formControlName="username" readonly>
+
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" readonly>
+
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name">
+
+      <label for="phone">Phone:</label>
+      <input id="phone" formControlName="phone">
+
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address">
+
+      <label for="bio">Bio:</label>
+      <textarea id="bio" formControlName="bio"></textarea>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+</div>

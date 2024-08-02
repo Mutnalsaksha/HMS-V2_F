@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<section class="services-section">
+    <div class="title">Our Services</div>
+
+    <div class="filter-options">
+      <div class="filter-option" [class.active]="activeFilter === 'all'" (click)="filterServices('all')">All</div>
+      <div class="filter-option" [class.active]="activeFilter === 'doctor'" (click)="filterServices('doctor')">Doctor Visit</div>
+      <div class="filter-option" [class.active]="activeFilter === 'nurse'" (click)="filterServices('nurse')">Nurse</div>
+      <div class="filter-option" [class.active]="activeFilter === 'delivery'" (click)="filterServices('delivery')">Delivery</div>
+      <div class="filter-option" [class.active]="activeFilter === 'others'" (click)="filterServices('others')">Others</div>
+    </div>
+
+  <!-- Service boxes -->
+  <div class="service-boxes">
+    <div *ngFor="let service of filteredServices" class="service-box" [attr.data-category]="service.dataCategory">
+      <div class="card-container">
+        <div class="card" style="width: 18rem;">
+          <div class="card-img-container">
+            <div class="img-square">
+              <img [src]="service.imageUrl" class="card-img-top" alt="">
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{service.title}}</h4>
+            <p class="card-text">{{service.description}}</p>
+            <a routerLink="/contactus" class="btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+<app-footer></app-footer>

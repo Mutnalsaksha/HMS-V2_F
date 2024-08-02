@@ -1,0 +1,127 @@
+<app-navbar></app-navbar>
+<section class="contact-us-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Contact Us</h2>
+          </div>
+          <div class="section-content">
+            <p>
+              Need to get in touch with us? Either fill out the form with your inquiry or find the email you'd like to contact below.
+              <br>Feel free to reach out to us for any inquiries or assistance. Our team is here to help you!
+            </p>
+            <div class="contact-icons">
+                <div>
+                  <i class="bi bi-phone"></i>
+                  <span>+1234567890</span>
+                </div>
+                <div>
+                  <i class="bi bi-envelope"></i>
+                  <span>demo@gmail.com</span>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form (submit)="submitContactForm()">
+              <div>
+                <input type="text" id="name"  [(ngModel)]="formData.name" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Your Name" required/>
+                <div class="alert" *ngIf="nameError">{{ nameError }}</div>
+              </div>
+              <div>
+                <input type="tel" id="number"  [(ngModel)]="formData.phoneNumber" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Phone Number" required/>
+                <div class="alert" *ngIf="numberError">{{ numberError }}</div>
+              </div>
+              <div>
+                <input type="email" id="email"  [(ngModel)]="formData.email" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Your Email"/>
+                <div class="alert" *ngIf="emailError">{{ emailError }}</div>
+              </div>
+              <div>
+                <select class="form-control nice-select wide" id="service"  [(ngModel)]="formData.service" [ngModelOptions]="{standalone: true}" required>
+                  <option value="" disabled selected >
+                    <span style="margin-right: 50px;">Which Service are you looking for?</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#9660;
+                  </option>
+                  <option value="Critical Care">
+                    Critical Care
+                  </option>
+                  <option value="Nursing Assistance">
+                    Nursing Assistance
+                  </option>
+                  <option value="Lab Assistance">
+                    Lab Assistance
+                  </option>
+                  <option value="Medicine Delivery">
+                    Medicine Delivery
+                  </option>
+                  <option value="Wound Care">
+                    Wound Care
+                  </option>
+                  <option value="Medical Equipments">
+                    Medical Equipments
+                  </option>
+                  <option value="Nutritionist">
+                    Nutritionist
+                  </option>
+                  <option value="Skilled Nursing">
+                    Skilled Nursing
+                  </option>
+                  <option value="Doctor Visit">
+                    Doctor Visit
+                  </option>
+                  <option value="Physiotherapist">
+                    Physiotherapist
+                  </option>
+                  <option value="Counceling">
+                    Counceling
+                  </option>
+                </select>
+                <div class="alert" *ngIf="serviceError"><p>{{ serviceError }}</p></div>
+              </div>
+              <div>
+                <input type="text" id="message"  [(ngModel)]="formData.message" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="What can we help you with?" required/>
+                <div class="alert" *ngIf="messageError">{{ messageError }}</div>
+              </div>
+
+              <!-- <div *ngIf="errorMessage" class="error-message" style="color: red;">
+                <p>{{ errorMessage }}</p>
+              </div> -->
+
+              <div *ngIf="successMessage" class="success-message">
+                <p>{{ successMessage }}</p>
+              </div>
+
+              <form (submit)="submitContactForm()">
+                <div class="btn_box">
+                  <button type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
+          <div class="position-relative h-100">
+              <iframe class="position-absolute w-100 h-100" style="object-fit: cover;"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.449400544041!2d77.60781487368999!3d12.8787988169089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6bda3d013719%3A0xa97f4e02b8a49f54!2sEiTechOne!5e0!3m2!1sen!2sin!4v1702079543936!5m2!1sen!2sin"
+                  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>"
+              frameborder="0" allowfullscreen="" aria-hidden="false"
+              tabindex="0">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end book section -->
+<app-footer></app-footer>

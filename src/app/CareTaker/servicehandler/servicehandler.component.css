@@ -1,0 +1,315 @@
+/* sidebar-navbar-component.css */
+.page{
+  position: fixed;
+}
+
+/* Add this to your global styles or component-specific CSS */
+.alert {
+  position: relative;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #721c24;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.alert .close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+  color: inherit;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.alert .close:hover {
+  opacity: 1;
+}
+
+.alert p {
+  margin-bottom: 0;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #ffbe33;
+  color: #222831;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: sticky; /* Add position sticky */
+  top: 0; /* Stick to the top */
+  z-index: 1000; /* Ensure navbar stays above other elements */
+}
+
+/* Logo styling */
+.logo h2{
+  margin : 0;
+  /* Adjust logo styling as needed */
+}
+
+/* Search bar styling */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 5px 10px;
+  margin-left: 800px;
+}
+
+/* Search input styling */
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+
+/* Search button styling */
+.search-bar button {
+  background-color: transparent;
+  border: none;
+  color: #ffbe33;
+  cursor: pointer;
+}
+
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /*margin-left: 10px;*/
+  margin-right: 20px;
+}
+
+/* name beside profile */
+.profile-menu .name {
+  max-width: 150px; /* Adjust width as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.profile-icon {
+  cursor: pointer;
+  margin-left: 20px;
+  font-size: 24px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.username {
+  font-size: 17px; /* Adjust font size as needed */
+  margin-left: 10px; /* Add margin for spacing */
+  color: #222831; /* Match text color with other elements */
+}
+
+/* Dots menu styling */
+.dots-menu {
+  position: relative;
+  cursor: pointer;
+  margin-right: 60px; /* Adjust margin as needed */
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Main content area */
+.sidebar-main-content {
+  display: flex;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  background-color: #222831;
+  color: white;
+  position: sticky;
+  top: 60px; /* Stick to the top when scrolling down */
+  height: calc(100vh - 50px); /* Ensure sidebar takes full viewport height */
+}
+
+/* Sidebar options styling */
+.sidebar-options {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+/* Sidebar option styling */
+.sidebar-options a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+/* Hover effect for sidebar options */
+.sidebar-options a:hover {
+  background-color: #34495e;
+  color:#eead20;
+  text-decoration: none;
+}
+
+/* Main content styling */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  /* Add more styling as needed */
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* servicehandler.component.css */
+.sidebar-options a {
+  cursor: pointer;
+}
+
+.header-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Add space between header and table */
+}
+
+.header-container h1 {
+  margin: 0 auto;
+  text-align: center;
+  flex-grow: 1;
+  padding-left: 50px; /* Add padding to align the header properly */
+}
+
+.table-container {
+  margin-top: 30px; /* Add margin to create space above the table */
+}
+
+.back-arrow {
+  margin-top: -10px;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  color: #007bff; /* Blue color for the arrow */
+  text-decoration: none;
+  font-size: 24px; /* Increase the size of the arrow */
+  padding: 0;
+  margin-right: 20px; /* Add space between arrow and header text */
+  border: none; /* Remove border */
+  background: none; /* Remove background */
+  cursor: pointer; /* Cursor pointer */
+}
+
+.back-arrow:hover {
+  text-decoration: underline;
+}
+
+.back-arrow i {
+  margin-right: 5px; /* Add space between the icon and the text */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Adjust styles for specific columns if needed */
+th:nth-child(1), td:nth-child(1) {
+  /* Styles for Request ID column */
+}
+
+th:nth-child(2), td:nth-child(2) {
+  /* Styles for Date column */
+}
+
+.status-closed {
+  color: green;
+  font-weight: bold;
+}
+
+.status-in-progress {
+  color: orange;
+  font-weight: bold;
+}
+
+.status-new {
+  color: black;
+  font-weight: bold;
+}

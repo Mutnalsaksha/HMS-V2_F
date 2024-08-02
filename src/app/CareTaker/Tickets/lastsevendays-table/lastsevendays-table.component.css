@@ -1,0 +1,15 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 300px;
+  overflow: auto;
+}
+
+table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 100px;
+  margin-left: 300px;
+}
