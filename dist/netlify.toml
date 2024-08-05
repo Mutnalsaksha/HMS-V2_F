@@ -1,0 +1,12 @@
+#[build]
+#publish = "dist/HMS-Website-Frontend"
+#command = "ng build --configuration production"
+#
+#[[redirects]]
+#from = "/*"
+#to = "/index.html"
+#status = 200
+
+[build]
+command = "ng build --configuration production"
+publish = "dist/HMS-Website-Frontend"
