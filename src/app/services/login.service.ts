@@ -8,7 +8,7 @@ import { environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class LoginService {
-  private baseUrl = 'http://localhost:3000'; // Update this with your backend URL
+  private baseUrl = 'https://hms-v2-b-3.onrender.com'; // Update this with your backend URL
 
   constructor(private http: HttpClient) {
   }
