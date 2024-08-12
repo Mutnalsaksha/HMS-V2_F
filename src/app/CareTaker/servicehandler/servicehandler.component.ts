@@ -144,7 +144,7 @@ export class ServicehandlerComponent implements OnInit {
   }
 
   getDisplayData(): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>('http://localhost:3000/displaydata');
+    return this.http.get<Ticket[]>('https://hms-v2-b.onrender.com/displaydata');
   }
 
   // Sorting method to sort tickets by requestDate in descending order
