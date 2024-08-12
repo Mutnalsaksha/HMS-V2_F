@@ -9,7 +9,7 @@ class Ticket {
   providedIn: 'root'
 })
 export class ProfileService {
-  private apiUrl = 'http://localhost:3000/api/profile';
+  private apiUrl = 'https://hms-v2-b.onrender.com/api/profile';
 
   constructor(private http: HttpClient) {
   }

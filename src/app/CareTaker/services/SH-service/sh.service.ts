@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ShService {
-  private apiUrl = 'http://localhost:3000/displaydata';
+  private apiUrl = 'https://hms-v2-b.onrender.com/displaydata';
 
   constructor(private http: HttpClient) { }
 

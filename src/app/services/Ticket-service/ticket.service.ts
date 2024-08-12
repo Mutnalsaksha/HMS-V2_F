@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TicketService {
-  private baseUrl = 'http://localhost:3000/'; // Your backend URL
+  private baseUrl = 'https://hms-v2-b.onrender.com'; // Your backend URL
 
   constructor(private http: HttpClient) {}
 
