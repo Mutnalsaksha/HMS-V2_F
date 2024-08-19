@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit{
 
         this.loginService.login(enteredEmail, enteredPassword).subscribe(
           (data: any) => {
-            console.log('Login response:', data);
             this.handleLoginResponse(data);
           },
           error => {
@@ -52,22 +51,16 @@ export class LoginComponent implements OnInit{
             this.handleFailedLogin();
           }
         );
-      } else {
-        console.log('Form is invalid');
       }
-    } else {
-      console.log('Email or password field is empty');
     }
   }
 
 
   private handleLoginResponse(response: any) {
     if (response.message === 'Login successful') {
-      console.log('Login successful');
       localStorage.setItem('userEmail', response.user.EmailAddress);
       this.router.navigate(['/service-handler']);
     } else {
-      console.log('Login failed');
       this.handleFailedLogin();
     }
   }
@@ -80,4 +73,3 @@ export class LoginComponent implements OnInit{
     form.reset();
   }
 }
-

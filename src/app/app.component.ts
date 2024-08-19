@@ -12,7 +12,6 @@ export class AppComponent {
 
   isRouteActive(route: string): boolean {
     const isActive = this.router.isActive(route, true);
-    // console.log(`Route: ${route}, isActive: ${isActive}`);
     return isActive;
   }
   title = 'website';

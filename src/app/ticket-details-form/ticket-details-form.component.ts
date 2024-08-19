@@ -19,8 +19,6 @@ export interface User {
   Bio: string;
 }
 
-
-
 @Component({
   selector: 'app-ticket-details-form',
   templateUrl: './ticket-details-form.component.html',
@@ -48,9 +46,7 @@ export class TicketDetailsFormComponent implements OnInit {
       reqDate: ['', Validators.required],
       serviceType: ['', Validators.required],
       assignedTo: ['', Validators.required],
-      // startDate: ['', [Validators.required, this.startDateValidator('reqDate'), this.dateRangeValidator('startDate', 'endDate')]],
       totalDays: [{ value: '', disabled: true }],
-      // endDate: ['', [Validators.required, this.endDateValidator('reqDate'),  this.dateRangeValidator('startDate', 'endDate')]],
       severity: ['', Validators.required],
       status: ['New', Validators.required],
       startDate: ['', Validators.required],
@@ -68,16 +64,13 @@ export class TicketDetailsFormComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params['id']); // Debugging line
       this.ticketId = params['id']; // Extract ticket ID from route parameters
-      console.log(`Loading details for ticket ID: ${this.ticketId}`); // Log the ticket ID
       this.loadTicketDetails(this.ticketId);
   });
     this.loadUsers();  // Load users when component initializes
   }
 
   loadTicketDetails(requestId: string): void {
-    console.log(`Requesting details for ticket ID: ${requestId}`); // Debugging line
     this.ticketService.getTicketDetails(requestId).subscribe(data => {
       // Format reqDate to YYYY/MM/DD HH:mm:ss format using moment
       const formattedReqDate = moment(data.requestDate).format('YYYY-MM-DD HH:mm:ss');
@@ -97,47 +90,25 @@ export class TicketDetailsFormComponent implements OnInit {
     });
   }
 
-  // loadUsers(): void {
-  //   this.userService.getUsers().subscribe(users => {
-  //     this.users = users.filter( ((user: User) => user.Usertype === 'ServiceHandler');  // Store the user data
-  //   }, error => {
-  //     console.error('Error loading users', error);
-  //   });
-  // }
-
-  // loadUsers(): void {
-  //   this.userService.getUsers().subscribe((users: User[]) => {
-  //     console.log('Users from backend:', users); // Debugging statement
-  //     this.users = users.filter(user => user.Usertype === 'ServiceHandler');  // Filter users
-  //     console.log('Filtered users:', this.users); // Debugging statement
-  //   }, error => {
-  //     console.error('Error loading users', error);
-  //   });
-  // }
-
   loadUsers(): void {
     this.userService.getUsers().subscribe(response => {
-      // Log the entire response to inspect the structure
-      console.log('Full response from backend:', response);
 
       // Assuming response is an array of user objects
       if (Array.isArray(response)) {
         // Log each user object
         response.forEach(user => {
-          console.log('User data:', user);
         });
 
         // Optional: Filter and log the filtered users
         const filteredUsers = response.filter(user => user.Usertype === 'ServiceHandler');
-        console.log('Filtered users:', filteredUsers);
 
         // Update the users array with filtered users
         this.users = filteredUsers;
       } else {
-        console.error('Expected an array but received:', response);
+        // console.error('Expected an array but received:', response);
       }
     }, error => {
-      console.error('Error loading users:', error);
+      // console.error('Error loading users:', error);
     });
   }
 
@@ -190,13 +161,10 @@ export class TicketDetailsFormComponent implements OnInit {
       this.formatDate('startDate');
       this.formatDate('endDate');
 
-      console.log('Form data is valid:', this.formData.value); // Debugging statement
-
       // Temporarily enable the totalDays field
       this.formData.get('totalDays')?.enable();
 
       this.ticketService.updateTicketDetails(this.ticketId, this.formData.value).subscribe(response => {
-        console.log('Response from update:', response); // Debugging statement
         this.submittedSuccessfully = true;
         this.ticketDetails = response;
 

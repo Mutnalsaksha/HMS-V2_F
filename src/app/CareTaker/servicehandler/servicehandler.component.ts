@@ -53,7 +53,7 @@ export class ServicehandlerComponent implements OnInit {
     if (email) {
       this.loadCurrentUserProfile(email);
     } else {
-      console.error('Email not found');
+      // console.error('Email not found');
     }
   }
 
@@ -65,7 +65,7 @@ export class ServicehandlerComponent implements OnInit {
           this.currentUserUsername = profile.Username;
         },
         error => {
-          console.error('Error fetching current user profile:', error);
+          // console.error('Error fetching current user profile:', error);
         }
     );
   }
@@ -74,11 +74,10 @@ export class ServicehandlerComponent implements OnInit {
   loadDisplayData(): void {
     this.shService.getDisplayData().subscribe(
         (data: any) => {
-          console.log('Fetched Data:', data); // Log fetched data
           this.displayData = data;
         },
         (error: any) => {
-          console.error('Error fetching display data:', error);
+          // console.error('Error fetching display data:', error);
         }
     );
   }
@@ -95,7 +94,6 @@ export class ServicehandlerComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          console.error('Error fetching display data:', error);
           this.loading = false;
         }
     );
@@ -121,8 +119,6 @@ export class ServicehandlerComponent implements OnInit {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.displayData = this.allTickets.slice(startIndex, endIndex);
-    console.log('Updated Display Data:', this.displayData); // Log updated display data
-    console.log(`Displaying records from ${startIndex} to ${endIndex}`);
   }
 
   nextPage() {
@@ -164,7 +160,6 @@ export class ServicehandlerComponent implements OnInit {
 
   //Tickets for last 7 days
   filterTicketsForLast7Days() {
-    console.log('Filtering tickets for last 7 days');
     const currentDate = new Date();
     // Set time to midnight for both today and seven days ago
     const beginningOfToday = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
@@ -188,15 +183,11 @@ export class ServicehandlerComponent implements OnInit {
     } else {
       this.alertMessage = ''; // Clear alert message if tickets are found
     }
-    console.log('Filtered data for last 7 days:', this.displayData);
   }
 
   filterTicketsAssignedToMe() {
-    console.log('Filtering tickets assigned to me');
-
     // Check if allTickets has been populated
     if (!this.allTickets || this.allTickets.length === 0) {
-      console.log('No tickets found to filter.');
       this.showAlert('No tickets found to filter.');
       return;
     }
@@ -204,17 +195,11 @@ export class ServicehandlerComponent implements OnInit {
     //here
     // Ensure currentUserUsername is defined
     if (!this.currentUserUsername) {
-      console.error('Current user username is not set.');
+      // console.error('Current user username is not set.');
       return;
     }
 
-    // Log current user
-    console.log('Current User:', this.currentUserUsername);
-
     this.allTickets = this.allTickets.filter(ticket => ticket.assignedTo === this.currentUserUsername);
-
-    // Log tickets after filtering
-    console.log('Filtered Tickets:', this.allTickets);
 
     if (this.allTickets.length === 0) {
       this.alertMessage = 'No tickets assigned to you.';
@@ -231,7 +216,6 @@ export class ServicehandlerComponent implements OnInit {
 
 
   filterTicketsNew() {
-    console.log('Filtering new tickets');
     this.allTickets = this.allTickets.filter(ticket => ticket.status === 'New');
     this.headerTitle = 'New Tickets'; // Update header title
     this.showBackButton = true; // Show back button
@@ -248,7 +232,6 @@ export class ServicehandlerComponent implements OnInit {
 
 
   filterTicketsInProgress() {
-    console.log('Filtering tickets in progress');
     this.allTickets = this.allTickets.filter(ticket => ticket.status === 'In Progress');
     this.headerTitle = 'Tickets In Progress'; // Update header title
     this.showBackButton = true; // Show back button
@@ -264,32 +247,21 @@ export class ServicehandlerComponent implements OnInit {
   }
 
   filterOverdueTickets() {
-    console.log("Filtering overdue tickets...");
-
     //get the current date
     const currentDate = new Date();
-    console.log("Current Date:", currentDate);
 
     // Check if allTickets has been populated
     if (!this.allTickets || this.allTickets.length === 0) {
-      console.log("No tickets found to filter.");
       return;
     }
 
     // Filter tickets where request date is more than 3 days ago and status is new
     this.allTickets = this.allTickets.filter(ticket => {
       const requestDate = new Date(ticket.requestDate);
-      console.log("Request Date: ", requestDate);
-
       const timeDifference = currentDate.getTime() - requestDate.getTime();
       const daysDifference = timeDifference / (1000 * 3600 * 24);
-      console.log(`Days Difference: ${daysDifference}, Status: ${ticket.status}`);
-
       return daysDifference > 3 && ticket.status === 'New';
     });
-
-    // Log filtered tickets
-    console.log("Filtered Tickets: ", this.allTickets);
 
     // Update header title and other properties
     this.headerTitle = 'Overdue Tickets'; // Update header title
@@ -303,9 +275,6 @@ export class ServicehandlerComponent implements OnInit {
     } else {
       this.alertMessage = ''; // Clear alert message if tickets are found
     }
-
-    // Log displayed tickets
-    console.log("Displayed Tickets: ", this.displayedTickets);
   }
 
   setAlertTimeout() {
@@ -361,7 +330,6 @@ export class ServicehandlerComponent implements OnInit {
   }
 
   onSearchButtonClick() {
-    console.log('Search term:', this.searchQuery);
     this.filterTicketsBySearchQuery();
   }
 

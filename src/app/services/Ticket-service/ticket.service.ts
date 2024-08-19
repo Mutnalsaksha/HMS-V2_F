@@ -11,13 +11,10 @@ export class TicketService {
   constructor(private http: HttpClient) {}
 
   getTicketDetails(requestId: string): Observable<any> {
-    console.log(`Fetching details for requestId: ${requestId}`); // Log requestId
     return this.http.get(`${this.baseUrl}/request/${requestId}`);
   }
 
   updateTicketDetails(requestId: string, data: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/request/${requestId}`, data);
   }
-
-
 }

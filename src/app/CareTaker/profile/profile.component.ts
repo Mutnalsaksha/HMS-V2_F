@@ -36,10 +36,8 @@ export class ProfileComponent implements OnInit {
   }
 
   loadProfile(email: string): void {
-    console.log('Fetching profile for email:', email);
     this.profileService.getProfile(email).subscribe(
       data => {
-        console.log('Profile data received:', data);
         this.userProfile = data;
         this.editProfileForm.patchValue({
           username: data.Username,
@@ -68,7 +66,6 @@ export class ProfileComponent implements OnInit {
     if (this.editProfileForm.valid) {
       this.profileService.updateProfile(this.editProfileForm.value).subscribe(
         data => {
-          console.log('Profile updated successfully:', data);
           this.userProfile = data;
           this.isEditing = false;
         },

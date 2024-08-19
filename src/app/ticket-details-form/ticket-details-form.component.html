@@ -33,9 +33,7 @@
         <label for="startDate">Start Date</label>
         <input type="date" id="startDate" formControlName="startDate" class="form-control" (change)="formatDate('startDate')">
         <div *ngIf="formData.get('startDate')?.invalid && formData.get('startDate')?.touched" class="invalid-feedback">
-<!--          <div *ngIf="formData.get('startDate')?.errors?.['required']">-->
-<!--            Start Date is required-->
-<!--          </div>-->
+
           <div *ngIf="formData.get('startDate')?.errors?.['startDateInvalid']">
             Start Date cannot be earlier than Request Date
           </div>
@@ -55,24 +53,11 @@
             </div>
         </div>
 
-<!--      &lt;!&ndash; Added alert message &ndash;&gt;-->
-<!--      <div class="alert alert-danger" *ngIf="formData.get('startDate')?.invalid && formData.get('startDate')?.touched">-->
-<!--        Start Date cannot be earlier than Request Date-->
-<!--      </div>-->
-
-<!--        &lt;!&ndash; Alert message&ndash;&gt;-->
-<!--        <div class="alert alert-danger" *ngIf="formData.get('endDate')?.errors?.['dateRangeInvalid'] && formData.get('endDate')?.touched">-->
-<!--            End Date cannot be earlier than Start Date-->
-<!--        </div>-->
-
 
         <div class="form-group">
         <label for="endDate">End Date</label>
         <input type="date" id="endDate" formControlName="endDate" class="form-control"  (change)="formatDate('endDate')">
         <div *ngIf="formData.get('endDate')?.invalid && formData.get('endDate')?.touched" class="invalid-feedback">
-<!--          <div *ngIf="formData.get('endDate')?.errors?.['required']">-->
-<!--            End Date is required-->
-<!--          </div>-->
           <div *ngIf="formData.get('endDate')?.errors?.['endDateInvalid']">
             End Date cannot be earlier than Request Date
           </div>
@@ -91,16 +76,6 @@
                 End Date cannot be earlier than Start Date
             </div>
         </div>
-
-<!--      &lt;!&ndash; Added alert message &ndash;&gt;-->
-<!--      <div class="alert alert-danger" *ngIf="formData.get('endDate')?.invalid && formData.get('endDate')?.touched">-->
-<!--        End Date cannot be earlier than Request Date-->
-<!--      </div>-->
-
-<!--        &lt;!&ndash; Alert for End Date cannot be earlier than Start Date &ndash;&gt;-->
-<!--        <div class="alert alert-danger" *ngIf="formData.get('endDate')?.errors?.['dateRangeInvalid'] && formData.get('endDate')?.touched">-->
-<!--            End Date cannot be earlier than Start Date-->
-<!--        </div>-->
 
 
       <div class="form-group">

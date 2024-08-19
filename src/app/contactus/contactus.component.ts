@@ -43,7 +43,6 @@ export class ContactusComponent {
     this.contactUsService.submitContactForm(this.formData).subscribe(
       (response) => {
         // Handle success
-        //console.log('Success:', response);
         this.successMessage = 'Form submitted successfully!';
         this.formSubmitted = true;
         this.resetForm();
