@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'ticket-details/:id', component: TicketDetailsFormComponent },
   {path:'sevendays-table',component:LastsevendaysTableComponent},
   {path:'profile', component:ProfileComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  // { path: '**', redirectTo: '', pathMatch: 'full' }
 
 
 ];

@@ -10,7 +10,6 @@ import { LoginService} from "../../services/login.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  // users: any[] = []; // Assuming your user data structure
   loginError: boolean = false;
 
   constructor(
