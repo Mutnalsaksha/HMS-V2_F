@@ -18,10 +18,10 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'service-handler',component:ServicehandlerComponent},
   {path: 'ticket-details/:id', component: TicketDetailsFormComponent },
-  // { path: '', redirectTo: '/service-handler', pathMatch: 'full' }, // Redirect to service-handler by default
-  // { path: '**', redirectTo: '/service-handler' }, // Redirect to service-handler for any other unknown routes
   {path:'sevendays-table',component:LastsevendaysTableComponent},
   {path:'profile', component:ProfileComponent},
+  { path: '**', redirectTo: '', pathMatch: 'full' }
+
 
 ];
 
